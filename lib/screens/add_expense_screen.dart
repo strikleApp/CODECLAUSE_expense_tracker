@@ -1,3 +1,4 @@
+import 'package:expense_tracker/firebase_dir/firebase_functions.dart';
 import 'package:expense_tracker/modals/expense.dart';
 import 'package:expense_tracker/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,20 +26,20 @@ class AddExpenseScreenState extends State<AddExpenseScreen> {
   DateTime _selectedDate = DateTime.now();
   String _category = 'Miscellaneous';
 
-  void _submitData() {
+  void _submitData() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final newExpense = Expense(
+        id: DateTime.now().microsecondsSinceEpoch,
         title: _title,
         amount: _amount,
-        date: _selectedDate,
+        date: _selectedDate.millisecondsSinceEpoch,
         category: _category,
       );
-
-      Provider.of<ExpensesProvider>(context, listen: false)
-          .addExpense(newExpense);
-
-      Navigator.of(context).pop();
+      await FirebaseFunctions().addItemToFirebase(expense: newExpense);
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
     }
   }
 

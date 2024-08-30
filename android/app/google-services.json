@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000701991568:android:e45f686bcb3c13875b9615",
+        "mobilesdk_app_id": "1:1000701991568:android:c7de41b6fb37f3315b9615",
         "android_client_info": {
-          "package_name": "com.expen"
+          "package_name": "com.strikle.expense.tracker.expense_tracker"
         }
       },
       "oauth_client": [],
