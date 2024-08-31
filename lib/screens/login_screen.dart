@@ -69,12 +69,12 @@ class LoginScreenState extends State<LoginScreen> {
                       } else if (e.code == 'invalid-email') {
                         _showSnackBar('Invalid email');
                       } else {
-                        _showSnackBar('There was an error!');
+                        _showSnackBar('User not found');
                       }
                     } on FirebaseException catch (_) {
-                      _showSnackBar('There was an error!');
+                      _showSnackBar('User not found');
                     } catch (e) {
-                      _showSnackBar('There was an error!');
+                      _showSnackBar('User not found');
                     }
                   }
                 },
